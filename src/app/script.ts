@@ -1,8 +1,11 @@
 console.log("Design Tokens Off Script Plugin Loaded");
-const submitButton = document.getElementById('submit-button');
-const downloadButton = document.getElementById('download-button');
+const submitButton = document.getElementById('generate-tokens');
+const downloadButton = document.getElementById('download-tokens');
 
 submitButton?.addEventListener('click', () => {
+    parent.postMessage({ pluginMessage: { type: 'generate-tokens', tokens: {tokens: ""} } }, '*');
+
+    return false;
     const font = (document.getElementById('font-input') as HTMLInputElement).value;
     const designType = (document.getElementById('design-type-select') as HTMLSelectElement).value;
     const primaryColor = (document.getElementById('primary-color-input') as HTMLInputElement).value;

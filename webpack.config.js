@@ -1,12 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // For injecting bundled assets into HTML
-const InlineChunkHtmlPlugin = require('inline-chunk-html-plugin'); // For inlining bundled assets into the HTML file
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const InlineAssetsPlugin = require('./InlineAssetsPlugin'); // Custom plugin to inline assets
 
 module.exports = (env, argv) => ({
   mode: argv.mode === 'production' ? 'production' : 'development',
   devtool: argv.mode === 'production' ? false : 'inline-source-map',
   entry: {
     code: './src/code.ts',
+    uistyles: "./src/app/style.css",
     ui: './src/app/script.ts',
   },
   module: {
@@ -17,7 +19,7 @@ module.exports = (env, argv) => ({
         exclude: /node_modules/,
       },
       {
-        test: /\.(scss|css)$/,
+        test: /\.(scss)$/,
         use: [
           'style-loader',
           'css-loader',
@@ -25,6 +27,10 @@ module.exports = (env, argv) => ({
           'sass-loader',
         ],
       },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      }
     ],
   },
   resolve: {
@@ -40,8 +46,20 @@ module.exports = (env, argv) => ({
       template: './src/ui.html',
       filename: 'ui.html',
       inlineSource: '.(js|css)$',
-      chunks: ['ui'],
+      inject: false, // Prevent automatic injection
+      minify: false,
+      // chunks: ['ui'],
     }),
-    new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/.*/]),
+    new MiniCssExtractPlugin({
+      filename: "[name].css"
+    }),
+    new InlineAssetsPlugin({
+      // htmlFile: "./src/ui.html",
+      includeEntries: ["ui", "uistyles"], // Only inline "main"
+      jsPlaceholder: "@INLINE-JS",
+      cssPlaceholder: "@INLINE-CSS",
+      removeInlinedFiles: true,
+      minify: true,
+    }),
   ],
 });

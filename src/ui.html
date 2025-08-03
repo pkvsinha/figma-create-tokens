@@ -1,38 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Tokens Setup</title>
-</head>
-<body>
-    <div class="container">
-        <h1>Design Tokens Setup</h1>
-        <form id="design-tokens-form">
-            <label for="typographic-font">Typographic Font:</label>
-            <input type="text" id="typographic-font" name="typographic-font" value="Poppins" required>
+<div class="container">
+    <h1>Design Tokens Setup</h1>
+    <form id="design-tokens-form">
+        <label for="typographic-font">Typographic Font:</label>
+        <input type="text" id="typographic-font" name="typographic-font" value="Poppins" required>
 
-            <label for="design-type">Design Type:</label>
-            <select id="design-type" name="design-type" required>
-                <option value="material">Material</option>
-                <option value="minimalist">Minimalist</option>
-                <option value="neuomorphic">Neumorphic</option>
-                <option value="skeuomorphic">Skeuomorphic</option>
-                <option value="ant-design">Ant Design</option>
-            </select>
+        <label for="design-type">Design Type:</label>
+        <select id="design-type" name="design-type" required>
+            <option value="material">Material</option>
+            <option value="minimalist">Minimalist</option>
+            <option value="neuomorphic">Neumorphic</option>
+            <option value="skeuomorphic">Skeuomorphic</option>
+            <option value="ant-design">Ant Design</option>
+        </select>
 
-            <label for="primary-color">Primary Color:</label>
-            <input type="color" id="primary-color" name="primary-color" required>
+        <label for="primary-color">Primary Color:</label>
+        <input type="color" id="primary-color" name="primary-color" required>
 
-            <label for="secondary-color">Secondary Color:</label>
-            <input type="color" id="secondary-color" name="secondary-color" required>
+        <label for="secondary-color">Secondary Color:</label>
+        <input type="color" id="secondary-color" name="secondary-color" required>
 
-            <label for="tertiary-color">Tertiary Color:</label>
-            <input type="color" id="tertiary-color" name="tertiary-color">
+        <label for="tertiary-color">Tertiary Color:</label>
+        <input type="color" id="tertiary-color" name="tertiary-color">
 
-            <button type="submit">Generate Tokens</button>
-            <button type="button" id="download-tokens">Download Tokens</button>
-        </form>
-    </div>
-</body>
-</html>
+        <button type="submit" id="generate-tokens">Generate Tokens</button>
+        <button type="button" id="download-tokens">Download Tokens</button>
+    </form>
+     <!-- @INLINE-JS -->
+    <!-- @INLINE-CSS -->
+</div>
