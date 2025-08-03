@@ -1,23 +1,44 @@
 {
-  "name": "seed-design-system",
+  "name": "@pkvsinha/figma-design-tokens-plugin",
   "version": "1.0.0",
-  "description": "Your Figma Plugin",
-  "main": "code.js",
+  "description": "A Figma plugin to create and manage design tokens for various design systems.",
+  "main": "dist/code.js",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build:prod": "webpack --mode production",
+    "watch:dev": "webpack --mode development --watch",
+    "build:tsc": "tsc -p tsconfig.json",
     "lint": "eslint --ext .ts,.tsx --ignore-pattern node_modules .",
     "lint:fix": "eslint --ext .ts,.tsx --ignore-pattern node_modules --fix .",
+    "build": "npm run build:prod",
     "watch": "npm run build -- --watch"
   },
-  "author": "",
-  "license": "",
+  "keywords": [
+    "figma",
+    "plugin",
+    "design tokens",
+    "typescript"
+  ],
+  "author": "Prashant Sinha",
+  "license": "MIT",
+  "dependencies": {
+    "figma-api": "^2.0.2-beta"
+  },
   "devDependencies": {
     "@figma/eslint-plugin-figma-plugins": "*",
     "@figma/plugin-typings": "*",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
+    "css-loader": "^7.1.2",
     "eslint": "^8.54.0",
-    "typescript": "^5.3.2"
+    "html-webpack-plugin": "^5.6.3",
+    "inline-chunk-html-plugin": "^1.1.1",
+    "postcss-loader": "^8.1.1",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^8.4.0",
+    "typescript": "^5.3.2",
+    "webpack": "^5.101.0",
+    "webpack-cli": "^4.10.0"
   },
   "eslintConfig": {
     "extends": [

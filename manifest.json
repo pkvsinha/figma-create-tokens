@@ -1,18 +1,25 @@
 {
-  "name": "seed-design-system",
-  "id": "1533175776547829644",
+  "name": "Figma Design Tokens Plugin",
+  "id": "com.prashantsinha.figma-design-tokens-plugin",
   "api": "1.0.0",
-  "main": "code.js",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html",
   "capabilities": [],
   "enableProposedApi": false,
   "documentAccess": "dynamic-page",
   "editorType": [
     "figma"
   ],
-  "ui": "ui.html",
   "networkAccess": {
     "allowedDomains": [
       "none"
     ]
-  }
+  },
+  "permissions": ["currentuser"],
+  "menu": [
+    {
+      "name": "Create Design Tokens",
+      "command": "createDesignTokens"
+    }
+  ]
 }
